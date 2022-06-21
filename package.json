@@ -1,0 +1,27 @@
+{
+  "name": "case",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "svg": "svgr -d components/Icons --svg-props \"width=100,\" components/Icons/svgs"
+  },
+  "engines": {
+    "node": ">=16.13.2"
+  },
+  "dependencies": {
+    "next": "12.1.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@svgr/cli": "6.2.1",
+    "eslint": "8.9.0",
+    "eslint-config-next": "12.1.0",
+    "prettier": "2.5.1",
+    "sass": "1.52.3"
+  }
+}
