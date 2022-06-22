@@ -1,7 +1,5 @@
-const Header = () => (
-  <header>
-    <h2>Header</h2>
-  </header>
-);
+import styles from './styles/header.module.scss';
+
+const Header = () => <header className={styles.title}></header>;
 
 export default Header;

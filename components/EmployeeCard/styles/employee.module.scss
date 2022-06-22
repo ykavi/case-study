@@ -1,0 +1,17 @@
+.container {
+  border: solid 1px #eeeeee;
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+
+  .content {
+    margin-left: 16px;
+
+    .jobTitle {
+      margin-top: 12px;
+    }
+  }
+
+}

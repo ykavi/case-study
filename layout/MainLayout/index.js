@@ -1,9 +1,10 @@
 import { Header, Footer } from '@components';
+import styles from './styles/layout.module.scss';
 
 const MainLayout = ({ children }) => (
   <>
     <Header />
-    <main>{children}</main>
+    <main className={styles.container}>{children}</main>
     <Footer />
   </>
 );

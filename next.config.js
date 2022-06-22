@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['cdn.dsmcdn.com'], //eklenen cdn domaini kullanılabilir
+    domains: ['source.unsplash.com'],
   },
 };
 
