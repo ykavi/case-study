@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   border: solid 1px #eeeeee;
   border-radius: 6px;
   padding: 6px;
@@ -12,6 +13,11 @@
     .jobTitle {
       margin-top: 12px;
     }
+  }
+
+  .detailText {
+    position: absolute;
+    bottom: 8px;
   }
 
 }
