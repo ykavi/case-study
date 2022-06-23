@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { MainLayout } from '@layout';
 import { ApolloProvider } from '@apollo/client';
 import client from '@lib';
+import { wrapper } from '../redux/store';
 import '../styles/global.scss';
 
 const MyApp = ({ Component, pageProps }) => (
@@ -20,4 +21,4 @@ const MyApp = ({ Component, pageProps }) => (
   </>
 );
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

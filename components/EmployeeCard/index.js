@@ -6,7 +6,7 @@ const getFullName = (firsName, lastName) => `${firsName} ${lastName}`;
 
 const EmployeeCard = ({ employee }) => {
   const cardRoute = `/detail/${employee?.id}`;
-  console.log(employee);
+
   return (
     <div className={styles.container}>
       <Image src={employee?.imageUrl} alt={employee?.firstName} width="150px" height="150px" />

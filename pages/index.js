@@ -1,14 +1,19 @@
-import { EmployeeCard, EmployeeList } from '@components';
+import { EmployeeList } from '@components';
 import client from '@lib';
 import { gql } from '@apollo/client';
+import { connect } from 'react-redux';
+import { setInfo } from '../redux/actions/main';
+import { wrapper } from '../redux/store';
 
-const Home = ({ companyData }) => (
-  <>
-    <EmployeeList employeeData={companyData?.company?.employees} />
-  </>
-);
+const Home = ({ companyData, name, setInfo }) => {
+  return (
+    <>
+      <EmployeeList employeeData={companyData?.company?.employees} />
+    </>
+  );
+};
 
-export async function getServerSideProps() {
+export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   const { data } = await client.query({
     query: gql`
       query {
@@ -37,11 +42,19 @@ export async function getServerSideProps() {
       }
     `,
   });
-  console.log(data);
+
   return {
     props: {
-      companyData: data,
+      companyData: data || {},
     },
   };
-}
-export default Home;
+});
+
+const mapStateToProps = (state) => {
+  return { name: state.main.name };
+};
+
+const mapDispatchToProps = {
+  setInfo,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
