@@ -2,9 +2,9 @@ import { EmployeeCard } from '@components';
 import { useSelector, useDispatch } from 'react-redux';
 import { setEmployee } from '../../redux/actions/main';
 
-const EmployeeList = ({ companyData }) => {
+const EmployeeList = ({ initialData }) => {
   const dispatch = useDispatch();
-  dispatch(setEmployee(companyData));
+  dispatch(setEmployee(initialData?.employees));
 
   const employeesData = useSelector((store) => store.main.employeesData);
 

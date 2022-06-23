@@ -2,7 +2,7 @@ import { EmployeeList } from '@components';
 import client from '@lib';
 import { GET_INITIAL_DATA } from '@queries';
 
-const Home = ({ companyData }) => <EmployeeList companyData={companyData?.company?.employees} />;
+const Home = ({ initialData }) => <EmployeeList initialData={initialData?.company} />;
 
 export const getStaticProps = async () => {
   const { data } = await client.query({
@@ -12,7 +12,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      companyData: data || {},
+      initialData: data || {},
     },
   };
 };
