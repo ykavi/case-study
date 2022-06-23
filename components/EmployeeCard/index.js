@@ -42,11 +42,11 @@ const EmployeeCard = ({ employee }) => {
 
       <div className={styles.voteContainer}>
         <span className={styles.increase} onClick={() => voteClickHandle(employee?.id, VOTE_TYPES.INCREASE)}>
-          +
+          <img src="https://cdn-icons-png.flaticon.com/512/2089/2089636.png" />
         </span>
         <span className={styles.voteText}>{employee?.rate}</span>
         <span className={styles.decrease} onClick={() => voteClickHandle(employee?.id, VOTE_TYPES.DECREASE)}>
-          -
+          <img src="https://cdn-icons-png.flaticon.com/512/2089/2089636.png" />
         </span>
       </div>
     </div>

@@ -1,8 +1,17 @@
 .container {
-  width: 70%;
+  width: 60%;
   margin: auto;
   min-height: 100vh;
   padding: 16px;
+
+  img {
+    border-radius: 6px;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+  }
 
   @media only screen and (max-width: 600px) {
     width: 100%;
