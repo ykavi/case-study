@@ -20,4 +20,44 @@
     bottom: 8px;
   }
 
+  .voteContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    cursor: pointer;
+    width: 100px;
+    padding: 6px;
+
+    .increase {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      background-color: #2dc44d;
+      width: 100%;
+      border-radius: 6px;
+    }
+    .decrease {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: darkred;
+      flex: 1;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 24px;
+    }
+    .voteText {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      flex: 2;
+    }
+  }
+
 }

@@ -4,8 +4,24 @@ import styles from './styles/employee.module.scss';
 
 const getFullName = (firsName, lastName) => `${firsName} ${lastName}`;
 
-const EmployeeCard = ({ employee }) => {
+const EmployeeCard = ({ employee, setEmployee, employeesData }) => {
   const cardRoute = `/detail/${employee?.id}`;
+
+  const increaseOnClick = (id) => {
+    const data = [...employeesData];
+    const index = employeesData?.findIndex((item) => item.id === id);
+    data[index].rate = ++data[index].rate;
+
+    setEmployee(data);
+  };
+
+  const decreaseOnClick = (id) => {
+    const data = [...employeesData];
+    const index = employeesData?.findIndex((item) => item.id === id);
+    data[index].rate = --data[index].rate;
+
+    setEmployee(data);
+  };
 
   return (
     <div className={styles.container}>
@@ -23,6 +39,16 @@ const EmployeeCard = ({ employee }) => {
         <Link href={cardRoute}>
           <a className={styles.detailText}>Detail</a>
         </Link>
+      </div>
+
+      <div className={styles.voteContainer}>
+        <span className={styles.increase} onClick={() => increaseOnClick(employee?.id)}>
+          +
+        </span>
+        <span className={styles.voteText}>{employee?.rate}</span>
+        <span className={styles.decrease} onClick={() => decreaseOnClick(employee?.id)}>
+          -
+        </span>
       </div>
     </div>
   );
