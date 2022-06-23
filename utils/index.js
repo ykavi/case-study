@@ -1,3 +1,3 @@
-import { shortingByVote, getIndexById, getFullName } from './helpers';
+import { sortByVote, getIndexById, getFullName } from './helpers';
 
-export { shortingByVote, getIndexById, getFullName };
+export { sortByVote, getIndexById, getFullName };

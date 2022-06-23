@@ -1,5 +1,5 @@
 import * as t from '../types';
-import { shortingByVote } from '@utils';
+import { sortByVote } from '@utils';
 
 const main = (
   state = {
@@ -17,7 +17,7 @@ const main = (
     case t.SET_EMPLOYEE:
       return {
         ...state,
-        employeesData: action.payload.sort(shortingByVote),
+        employeesData: action.payload.sort(sortByVote),
       };
     default:
       return { ...state };

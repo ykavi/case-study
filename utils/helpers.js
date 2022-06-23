@@ -1,4 +1,4 @@
-export const shortingByVote = (a, b) => {
+export const sortByVote = (a, b) => {
   if (a.rate < b.rate) return -1;
   if (a.rate > b.rate) return 1;
   return 0;

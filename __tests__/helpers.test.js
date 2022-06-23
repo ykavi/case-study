@@ -1,4 +1,4 @@
-import { shortingByVote, getIndexById, getFullName } from '../utils';
+import { sortByVote, getIndexById, getFullName } from '../utils';
 let students = [
   {
     id: 123,
@@ -27,8 +27,8 @@ describe('[helpers]', () => {
     expect(index).toBe(2);
   });
 
-  it('Should work shortingByVote method', () => {
-    students.sort(shortingByVote);
+  it('Should work sortByVote method', () => {
+    students.sort(sortByVote);
 
     expect(students[0].rate).toBe(1);
     expect(students[1].rate).toBe(7);

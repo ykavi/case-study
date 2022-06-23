@@ -1,10 +1,17 @@
 import { EmployeeList } from '@components';
 import client from '@lib';
 import { GET_INITIAL_DATA } from '@queries';
+import { setEmployee } from '../redux/actions/main';
+import { useDispatch } from 'react-redux';
 
-const Home = ({ initialData }) => <EmployeeList initialData={initialData?.company} />;
+const Home = ({ initialData }) => {
+  const dispatch = useDispatch();
+  dispatch(setEmployee(initialData?.company?.employees));
 
-export const getStaticProps = async () => {
+  return <EmployeeList />;
+};
+
+export const getServerSideProps = async () => {
   const { data } = await client.query({
     query: GET_INITIAL_DATA,
     fetchPolicy: 'no-cache',
