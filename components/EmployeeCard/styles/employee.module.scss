@@ -12,6 +12,10 @@
 
     .jobTitle {
       margin-top: 12px;
+
+      @media only screen and (max-width: 600px) {
+        font-size: 12px;
+      }
     }
   }
 
@@ -32,6 +36,10 @@
     cursor: pointer;
     width: 100px;
     padding: 6px;
+
+    @media only screen and (max-width: 600px) {
+      width: 40px;
+    }
 
     .increase {
       display: flex;

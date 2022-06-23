@@ -24,7 +24,7 @@ const EmployeeCard = ({ employee }) => {
 
   return (
     <div className={styles.container}>
-      <Image src={employee?.imageUrl} alt={employee?.firstName} width="150px" height="150px" />
+      <Image src={employee?.imageUrl} alt={employee?.firstName} width="120px" height="120px" />
 
       <div className={styles.content}>
         <div>
