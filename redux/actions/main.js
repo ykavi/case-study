@@ -6,3 +6,10 @@ export const setInfo = (name) => (dispatch) => {
     payload: name,
   });
 };
+
+export const setEmployee = (data) => (dispatch) => {
+  dispatch({
+    type: t.SET_EMPLOYEE,
+    payload: data,
+  });
+};

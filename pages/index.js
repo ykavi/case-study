@@ -2,16 +2,10 @@ import { EmployeeList } from '@components';
 import client from '@lib';
 import { gql } from '@apollo/client';
 import { connect } from 'react-redux';
-import { setInfo } from '../redux/actions/main';
+import { setInfo, setEmployee } from '../redux/actions/main';
 import { wrapper } from '../redux/store';
 
-const Home = ({ companyData, name, setInfo }) => {
-  return (
-    <>
-      <EmployeeList employeeData={companyData?.company?.employees} />
-    </>
-  );
-};
+const Home = ({ employeesData }) => <EmployeeList employeeData={employeesData} />;
 
 export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   const { data } = await client.query({
@@ -43,9 +37,13 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
     `,
   });
 
+  store.dispatch(setEmployee(data?.company?.employees));
+  const employeesData = store.getState().main.employeesData;
+
   return {
     props: {
       companyData: data || {},
+      employeesData: employeesData,
     },
   };
 });
@@ -56,5 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   setInfo,
+  setEmployee,
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
