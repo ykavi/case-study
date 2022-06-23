@@ -1,22 +1,17 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { useRouter } from 'next/router';
 import { EmployeeDetailCard } from '@components';
-
-const QUERY = gql`
-  query employee {
-    employee(id: "ODY3OTA1Njk2Ng==") {
-      id
-      lastName
-      employeeDetail {
-        address
-        eMail
-        phone
-      }
-    }
-  }
-`;
+import { GET_EMPLOYEE_DATA } from '@queries';
 
 const EmployeeDetail = () => {
-  const { data, loading, error } = useQuery(QUERY);
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { data, loading, error } = useQuery(GET_EMPLOYEE_DATA, {
+    variables: {
+      id: id,
+    },
+  });
 
   if (loading) <p>Loading...</p>;
   if (error || !data) return null;

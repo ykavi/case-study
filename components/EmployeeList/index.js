@@ -1,12 +1,10 @@
 import { EmployeeCard } from '@components';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const EmployeeList = ({ companyData, setEmployee, employeesData }) => {
   useEffect(() => {
     setEmployee(companyData);
   }, [companyData]);
-
-  console.log('list');
 
   return (
     <>

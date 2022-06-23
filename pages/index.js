@@ -1,40 +1,15 @@
 import { EmployeeList } from '@components';
 import client from '@lib';
-import { gql } from '@apollo/client';
 import { connect } from 'react-redux';
 import { setInfo, setEmployee } from '../redux/actions/main';
-import { wrapper } from '../redux/store';
+import { GET_INITIAL_DATA } from '@queries';
 
 const Home = ({ companyData, ...rest }) => <EmployeeList companyData={companyData?.company?.employees} {...rest} />;
 
-export const getStaticProps = wrapper.getStaticProps((store) => async () => {
+export const getStaticProps = async () => {
   const { data } = await client.query({
-    query: gql`
-      query {
-        company {
-          id
-          industry
-          name
-          employees {
-            id
-            imageUrl
-            firstName
-            company {
-              name
-            }
-            lastName
-            jobTitle
-            rate
-            employeeDetail {
-              id
-              phone
-              address
-              eMail
-            }
-          }
-        }
-      }
-    `,
+    query: GET_INITIAL_DATA,
+    fetchPolicy: 'no-cache',
   });
 
   return {
@@ -42,7 +17,7 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
       companyData: data || {},
     },
   };
-});
+};
 
 const mapStateToProps = (state) => {
   return { name: state.main.name, employeesData: state.main.employeesData };

@@ -6,7 +6,8 @@
       "@Icons": ["./components/Icons"],
       "@layout": ["./layout"],
       "@lib": ["./lib"],
-      "@utils": ["./utils"]
+      "@utils": ["./utils"],
+      "@queries": ["./queries"]
     }
   }
 }
