@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styles from './styles/employee.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { setEmployee } from '../../redux/actions/main';
+import { getIndexById } from '@utils';
 
 const getFullName = (firsName, lastName) => `${firsName} ${lastName}`;
 
@@ -14,7 +15,7 @@ const EmployeeCard = ({ employee }) => {
 
   const increaseOnClick = (id) => {
     const data = [...employeesData];
-    const index = employeesData?.findIndex((item) => item.id === id);
+    const index = getIndexById(id, employeesData);
     data[index].rate = ++data[index].rate;
 
     dispatch(setEmployee(data));
@@ -22,7 +23,7 @@ const EmployeeCard = ({ employee }) => {
 
   const decreaseOnClick = (id) => {
     const data = [...employeesData];
-    const index = employeesData?.findIndex((item) => item.id === id);
+    const index = getIndexById(id, employeesData);
     data[index].rate = --data[index].rate;
 
     dispatch(setEmployee(data));

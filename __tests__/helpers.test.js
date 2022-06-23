@@ -1,16 +1,19 @@
-import { shortingByVote } from '../utils';
+import { shortingByVote, getIndexById } from '../utils';
 let students = [
   {
+    id: 123,
     fname: 'Rohan',
     lname: 'Dalal',
     rate: 32,
   },
   {
+    id: 345,
     fname: 'Zain',
     lname: 'Ahmed',
     rate: 7,
   },
   {
+    id: 456,
     fname: 'Anadi',
     lname: 'Malhotra',
     rate: 1,
@@ -18,6 +21,12 @@ let students = [
 ];
 
 describe('[helpers]', () => {
+  it('Should work getIndexById method', () => {
+    const index = getIndexById(456, students);
+
+    expect(index).toBe(2);
+  });
+
   it('Should work shortingByVote method', () => {
     students.sort(shortingByVote);
 
