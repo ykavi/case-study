@@ -1,18 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './styles/employee.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { setEmployee } from '../../redux/actions/main';
 
 const getFullName = (firsName, lastName) => `${firsName} ${lastName}`;
 
-const EmployeeCard = ({ employee, setEmployee, employeesData }) => {
+const EmployeeCard = ({ employee }) => {
+  const dispatch = useDispatch();
   const cardRoute = `/detail/${employee?.id}`;
+
+  const employeesData = useSelector((store) => store.main.employeesData);
 
   const increaseOnClick = (id) => {
     const data = [...employeesData];
     const index = employeesData?.findIndex((item) => item.id === id);
     data[index].rate = ++data[index].rate;
 
-    setEmployee(data);
+    dispatch(setEmployee(data));
   };
 
   const decreaseOnClick = (id) => {
@@ -20,7 +25,7 @@ const EmployeeCard = ({ employee, setEmployee, employeesData }) => {
     const index = employeesData?.findIndex((item) => item.id === id);
     data[index].rate = --data[index].rate;
 
-    setEmployee(data);
+    dispatch(setEmployee(data));
   };
 
   return (

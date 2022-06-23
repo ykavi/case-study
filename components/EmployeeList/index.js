@@ -1,15 +1,21 @@
 import { EmployeeCard } from '@components';
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setEmployee } from '../../redux/actions/main';
 
-const EmployeeList = ({ companyData, setEmployee, employeesData }) => {
+const EmployeeList = ({ companyData }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    setEmployee(companyData);
+    dispatch(setEmployee(companyData));
   }, [companyData]);
+
+  const employeesData = useSelector((store) => store.main.employeesData);
 
   return (
     <>
       {employeesData?.map((employee) => (
-        <EmployeeCard employee={employee} key={employee.id} setEmployee={setEmployee} employeesData={employeesData} />
+        <EmployeeCard employee={employee} key={employee.id} />
       ))}
     </>
   );
