@@ -5,3 +5,5 @@ export const shortingByVote = (a, b) => {
 };
 
 export const getIndexById = (id, data) => data?.findIndex((item) => item.id === id);
+
+export const getFullName = (firsName, lastName) => `${firsName} ${lastName}`;

@@ -1,4 +1,4 @@
-import { shortingByVote, getIndexById } from '../utils';
+import { shortingByVote, getIndexById, getFullName } from '../utils';
 let students = [
   {
     id: 123,
@@ -33,5 +33,11 @@ describe('[helpers]', () => {
     expect(students[0].rate).toBe(1);
     expect(students[1].rate).toBe(7);
     expect(students[2].rate).toBe(32);
+  });
+
+  it('Should work getFullName method', () => {
+    const fullName = getFullName('yunus emre', 'kavi');
+
+    expect(fullName).toBe('yunus emre kavi');
   });
 });

@@ -3,9 +3,8 @@ import Link from 'next/link';
 import styles from './styles/employee.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { setEmployee } from '../../redux/actions/main';
-import { getIndexById } from '@utils';
-
-const getFullName = (firsName, lastName) => `${firsName} ${lastName}`;
+import { getIndexById, getFullName } from '@utils';
+import { VOTE_TYPES } from '@enums';
 
 const EmployeeCard = ({ employee }) => {
   const dispatch = useDispatch();
@@ -13,18 +12,12 @@ const EmployeeCard = ({ employee }) => {
 
   const employeesData = useSelector((store) => store.main.employeesData);
 
-  const increaseOnClick = (id) => {
+  const voteClickHandle = (id, type) => {
     const data = [...employeesData];
     const index = getIndexById(id, employeesData);
-    data[index].rate = ++data[index].rate;
 
-    dispatch(setEmployee(data));
-  };
-
-  const decreaseOnClick = (id) => {
-    const data = [...employeesData];
-    const index = getIndexById(id, employeesData);
-    data[index].rate = --data[index].rate;
+    if (type === VOTE_TYPES.INCREASE) data[index].rate = ++data[index].rate;
+    if (type === VOTE_TYPES.DECREASE) data[index].rate = --data[index].rate;
 
     dispatch(setEmployee(data));
   };
@@ -48,11 +41,11 @@ const EmployeeCard = ({ employee }) => {
       </div>
 
       <div className={styles.voteContainer}>
-        <span className={styles.increase} onClick={() => increaseOnClick(employee?.id)}>
+        <span className={styles.increase} onClick={() => voteClickHandle(employee?.id, VOTE_TYPES.INCREASE)}>
           +
         </span>
         <span className={styles.voteText}>{employee?.rate}</span>
-        <span className={styles.decrease} onClick={() => decreaseOnClick(employee?.id)}>
+        <span className={styles.decrease} onClick={() => voteClickHandle(employee?.id, VOTE_TYPES.DECREASE)}>
           -
         </span>
       </div>

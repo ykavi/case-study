@@ -7,7 +7,8 @@
       "@layout": ["./layout"],
       "@lib": ["./lib"],
       "@utils": ["./utils"],
-      "@queries": ["./queries"]
+      "@queries": ["./queries"],
+      "@enums": ["./enums"]
     }
   }
 }

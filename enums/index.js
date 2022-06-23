@@ -1,0 +1,4 @@
+export const VOTE_TYPES = {
+  INCREASE: 'INCREASE',
+  DECREASE: 'DECREASE',
+};
